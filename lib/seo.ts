@@ -1,11 +1,11 @@
 export const site = {
   url: "https://www.gowri.ch/",
-  name: "Gowri",
-  title: "Gowri — Platform Engineer | Cloud & Networking",
+  name: "Gowri Sankar",
+  title: "Gowri Sankar",
   description:
-    "Gowri's personal site: platform engineering, Kubernetes, hybrid cloud and private networking, with career experience, certifications and projects.",
+    "Gowri's personal site: field notes from the cloud, the wire, and the spaces in between.",
   image: "https://www.gowri.ch/social-preview.png",
-  imageAlt: "Gowri — Platform engineering, cloud and networking. www.gowri.ch",
+  imageAlt: "Gowri Sankar — Platform engineering, cloud and networking. www.gowri.ch",
 };
 
 export const profileSchema = {
