@@ -32,6 +32,14 @@ headers. Treat the address as display-only proxy data, not authenticated
 identity. The application does not persist it, and responses containing it
 must not be publicly cached.
 
+## Analytics
+
+The site sends page views to the self-hosted Umami instance at
+`https://awe-theta.vercel.app`. The tracker is configured in
+[app/layout.tsx](./app/layout.tsx) and runs only on Vercel production and preview
+deployments, not local runs. Vercel system environment variables must be enabled
+so that `VERCEL_ENV` is available.
+
 ## Site assets
 
 - [Social preview](./public/social-preview.png)

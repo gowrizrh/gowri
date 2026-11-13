@@ -55,7 +55,8 @@ Keep this file current when architecture or confirmed design decisions change.
 - [app/globals.css](app/globals.css) owns the palette tokens, global typography,
   glow, CRT scanlines, and cursor animation. `retro` gates glow and scanlines;
   the cursor blink remains separate.
-- [app/layout.tsx](app/layout.tsx) owns self-hosted fonts and Next.js metadata.
+- [app/layout.tsx](app/layout.tsx) owns self-hosted fonts, Next.js metadata,
+  and the self-hosted Umami tracker (Vercel production/preview only).
   [lib/seo.ts](lib/seo.ts) owns site identity and ProfilePage/Person JSON-LD.
 - [app/error.tsx](app/error.tsx) and [app/not-found.tsx](app/not-found.tsx)
   provide recovery and not-found UI.

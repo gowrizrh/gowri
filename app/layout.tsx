@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, VT323 } from "next/font/google";
+import Script from "next/script";
 import { site } from "@/lib/seo";
 import "./globals.css";
 
@@ -50,12 +51,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const enableAnalytics =
+    process.env.NODE_ENV === "production" &&
+    (process.env.VERCEL_ENV === "production" ||
+      process.env.VERCEL_ENV === "preview");
+
   return (
     <html
       lang="en"
       className={`${jetBrainsMono.variable} ${vt323.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {enableAnalytics && (
+          <Script
+            src="https://awe-theta.vercel.app/awe.js"
+            data-website-id="7695815d-5cac-4bde-ab4b-34a1b6005a40"
+          />
+        )}
+      </body>
     </html>
   );
 }
