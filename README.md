@@ -1,44 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gowri's personal site
 
-## Getting Started
+A single-page, shell-inspired personal site. Shell commands are presentation,
+not an executable terminal; the page stays unframed without terminal-window
+chrome.
 
-First, run the development server:
+The homepage includes an about line, career views, confirmed credentials, and
+one selected project. Appearance controls provide six colour palettes and an
+independent retro CRT effect. The theme uses JetBrains Mono and VT323.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Development
+
+Use Bun to install dependencies and run scripts:
+
+```sh
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the production build and linter with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+bun run build
+bun run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Visitor address
 
-## Visitor identity
+Prompts display the address from the request's `x-real-ip` header, or the first
+`x-forwarded-for` value, with `guest` as a fallback. Vercel supplies these
+headers. Treat the address as display-only proxy data, not authenticated
+identity. The application does not persist it, and responses containing it
+must not be publicly cached.
 
-The shell prompt displays the visitor address from `x-real-ip`, or the first
-`x-forwarded-for` value, with `guest` as a fallback. Vercel provides these
-headers; elsewhere they depend on the proxy configuration and must not be used
-as authenticated identity. The address is rendered per request and is not
-persisted by the application. Do not publicly cache responses containing it.
+## Site assets
 
-## Learn More
+- [Social preview](./public/social-preview.png)
+- [Robots rules](./public/robots.txt)
+- [Sitemap](./public/sitemap.xml)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Site metadata and structured profile data are in [lib/seo.ts](./lib/seo.ts).
