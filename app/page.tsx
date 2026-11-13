@@ -1,4 +1,8 @@
 import { profileSchema } from "@/lib/seo";
+import { Appearance } from "./appearance";
+import { Experience } from "./experience";
+import { Prompt } from "./prompt";
+import { Visitor } from "./visitor";
 
 const credentials = [
   {
@@ -11,28 +15,9 @@ const credentials = [
   },
 ];
 
-function Prompt({ cmd, heading }: { cmd: string; heading?: string }) {
-  const Tag = heading ? "h2" : "p";
-
-  return (
-    <Tag id={heading} className="mt-10 first:mt-0 text-inherit font-normal">
-      <span data-nosnippet="" className="whitespace-nowrap text-primary glow">
-        guest@home
-      </span>
-      <span className="text-muted-foreground">:</span>
-      <span className="text-primary">~</span>
-      <span className="text-muted-foreground">$ </span>
-      <span>{cmd}</span>
-    </Tag>
-  );
-}
-
 export default function Home() {
   return (
-    <main
-      data-palette="original amber"
-      className="retro min-h-screen px-6 pt-24 pb-12 md:py-20"
-    >
+    <Appearance>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -40,20 +25,24 @@ export default function Home() {
         }}
       />
       <div className="mx-auto max-w-3xl text-sm leading-relaxed md:text-base">
-        <Prompt cmd="whoami" />
+        <Prompt cmd="whoami" visitor={<Visitor />} />
         <h1 className="font-display mt-3 text-6xl leading-none text-primary glow md:text-8xl">
           Gowri
         </h1>
 
         <section aria-labelledby="about-heading" className="mt-10">
-          <Prompt cmd="cat about.txt" heading="about-heading" />
+          <Prompt cmd="cat about.txt" heading="about-heading" visitor={<Visitor />} />
           <p className="mt-3 glow">
             field notes from the cloud, the wire, and the spaces in between.
           </p>
         </section>
 
+        <section id="career" aria-labelledby="career-heading" className="scroll-mt-24">
+          <Experience visitor={<Visitor />} />
+        </section>
+
         <section id="credentials" aria-label="Credentials" className="my-10 scroll-mt-24">
-          <Prompt cmd="ls /etc/pki/tls/certs" heading="credentials-heading" />
+          <Prompt cmd="ls /etc/pki/tls/certs" heading="credentials-heading" visitor={<Visitor />} />
           <ul aria-label="Certification credentials" className="mt-3 space-y-1">
             {credentials.map((credential) => (
               <li key={credential.name} className="break-all">
@@ -72,7 +61,7 @@ export default function Home() {
         </section>
 
         <section id="projects" aria-labelledby="projects-heading" className="my-10 scroll-mt-24">
-          <Prompt cmd="ls ~/projects" heading="projects-heading" />
+          <Prompt cmd="ls ~/projects" heading="projects-heading" visitor={<Visitor />} />
           <ul aria-label="Selected projects" className="mt-3 space-y-4">
             <li>
               <div className="flex flex-wrap items-baseline gap-x-3">
@@ -96,13 +85,11 @@ export default function Home() {
         </section>
 
         <p className="mt-10">
-          <span data-nosnippet="" className="whitespace-nowrap text-primary glow">
-            guest@home
-          </span>
+          <Visitor />
           <span className="text-muted-foreground">:~$ </span>
           <span className="cursor-blink inline-block h-5 w-2.5 translate-y-1 bg-foreground" />
         </p>
       </div>
-    </main>
+    </Appearance>
   );
 }

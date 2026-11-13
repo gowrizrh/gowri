@@ -20,6 +20,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Visitor identity
+
+The shell prompt displays the visitor address from `x-real-ip`, or the first
+`x-forwarded-for` value, with `guest` as a fallback. Vercel provides these
+headers; elsewhere they depend on the proxy configuration and must not be used
+as authenticated identity. The address is rendered per request and is not
+persisted by the application. Do not publicly cache responses containing it.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
